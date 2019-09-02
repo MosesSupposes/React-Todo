@@ -11,13 +11,23 @@ export default class TodoForm extends Component {
     }
 
     handleSubmit = event => {
+        // prevent page from reloading
         event.preventDefault()
-        this.props.addTodo({
+
+        const newTodo = {
             id: uuid(),
             task: this.state.currentTodo,
             completed: false
-        })
+        }
+        this.props.addTodo(newTodo)
+
+        this.persistToLocalStorage(newTodo)
+        // reset 
         this.setState({currentTodo: ''})
+    }
+
+    persistToLocalStorage = (todoItem) => {
+        localStorage.setItem('todos', JSON.stringify(this.props.todos.concat(todoItem)))
     }
     
     render() {

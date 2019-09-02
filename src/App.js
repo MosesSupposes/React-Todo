@@ -5,7 +5,8 @@ import TodoForm from './components/TodoComponents/TodoForm'
 
 class App extends React.Component {
   state = {
-    todos: dummyData,
+    // todos: dummyData,
+    todos: JSON.parse(localStorage.getItem('todos')) || []
   }
 
   addTodo = todo => {
@@ -29,7 +30,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <TodoForm addTodo={this.addTodo} clearCompletedTodos={this.clearCompletedTodos} />
+        <TodoForm 
+          todos={this.state.todos} 
+          addTodo={this.addTodo} 
+          clearCompletedTodos={this.clearCompletedTodos} 
+        />
         <TodoList todos={this.state.todos} toggleCompleted={this.toggleCompleted} />
       </div>
     )
