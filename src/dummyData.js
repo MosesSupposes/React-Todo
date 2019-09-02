@@ -1,17 +1,19 @@
+import uuid from 'uuid'
+
 export default [
     {
         task: "Learn Vim",
-        id: Date.now(),
+        id: uuid(),
         completed: false
     },
     {
         task: "Learn Python",
-        id: Date.now(),
+        id: uuid(),
         completed: false
     },
     {
         task: "Improve at Elm",
-        id: Date.now(),
+        id: uuid(),
         completed: false
     }
 ]
