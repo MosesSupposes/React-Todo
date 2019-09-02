@@ -30,7 +30,7 @@ export default class TodoForm extends Component {
                     placeholder="enter a task"
                 />
                 <button type="submit">+</button>
-                <button>Clear</button>
+                <button onClick={this.props.clearCompletedTodos}>Clear completed</button>
             </form>
     )
     }

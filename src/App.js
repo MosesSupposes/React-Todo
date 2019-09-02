@@ -13,12 +13,24 @@ class App extends React.Component {
       ({ todos: prevState.todos.concat(todo) })
     )
   }
+
+  clearCompletedTodos = () => {
+    this.setState({
+      todos: this.state.todos.filter(todo => !todo.completed)
+    })
+  }
+
+  toggleCompleted = index => {
+    const temporaryTodos = [...this.state.todos]
+    temporaryTodos[index].completed = !temporaryTodos[index].completed
+    this.setState({ todos: temporaryTodos })
+  }
   
   render() {
     return (
       <div>
-        <TodoForm addTodo={this.addTodo} />
-        <TodoList todos={this.state.todos} />
+        <TodoForm addTodo={this.addTodo} clearCompletedTodos={this.clearCompletedTodos} />
+        <TodoList todos={this.state.todos} toggleCompleted={this.toggleCompleted} />
       </div>
     )
   }
