@@ -15,9 +15,9 @@ class App extends React.Component {
   }
 
   clearCompletedTodos = () => {
-    this.setState({
-      todos: this.state.todos.filter(todo => !todo.completed)
-    })
+    this.setState(prevState => 
+      ({ todos: prevState.todos.filter(todo => !todo.completed) }) 
+    )
   }
 
   toggleCompleted = index => {
